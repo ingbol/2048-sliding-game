@@ -1,9 +1,14 @@
+documentWidth = window.screen.availWidth;
+gridContainerWidth = 0.92 * documentWidth;
+cellSideLength = 0.18 * documentWidth;
+cellSpace = 0.04 * documentWidth;
+
 function getPosTop(i, j){
-  return 20 + 120*i;
+  return cellSpace + (cellSideLength + cellSpace) * i;
 }
 
 function getPosLeft(i, j){
-  return 20 + 120*j;
+  return cellSpace + (cellSideLength + cellSpace) * j;
 }
 
 function getNumberBackgroundColor(number){
@@ -39,6 +44,17 @@ function nospace( board ){
         return false;
 
   return true;
+}
+
+function nomove(board) {
+  if (canMoveLeft(board) 
+    || canMoveUp(board)
+    || canMoveRight(board)
+    || canMoveDown(board)) {
+      return false;
+    }
+    
+    return true;
 }
 
 function canMoveLeft( board ){
